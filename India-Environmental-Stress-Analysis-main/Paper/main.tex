@@ -1,0 +1,320 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}   % <-- HERE (last package ideally)
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{microtype}
+\begin{document}
+
+\title{\textbf{Environmental Stress and Public Climate Attention in India: A Multi-Dimensional Analysis}}
+
+\author{
+Amit Raj, Alexander Shirnin \\
+\textit{Faculty of Computer Science} \\
+\textit{National Research University Higher School of Economics, Moscow}
+}
+
+\date{January 15, 2026}
+
+\maketitle
+
+\begin{abstract}
+Environmental degradation in India has intensified over the past decade, yet public attention to climate and pollution issues remains uneven across regions. This study examines whether environmental stress acts as a trigger for public climate engagement at the state level. Using publicly available data from 2015 to 2023, we integrate multiple dimensions of environmental pressure, including air quality (AQI), industrial pollution (CEPI), and plastic waste generation. These indicators are combined to construct a Composite Environmental Stress Index (CESI), which captures the intensity of structural and atmospheric pollution in Indian states.
+
+To assess public attention, we employ Google Trends data as a proxy for climate-related search behavior. Our findings reveal that environmental stress in India is multi-dimensional and geographically clustered, with plastic waste showing a statistically significant upward trend. Although industrial and air pollution are positively associated, their correlation is modest, suggesting differentiated pollution regimes. Regression analysis indicates that states experiencing higher environmental stress demonstrate higher levels of climate-related search activity, though the relationship varies across regions.
+
+The results suggest that environmental crises can function as catalysts for public awareness, but the responsiveness of digital attention is not uniform. These findings have implications for youth climate advocacy, environmental communication strategies, and data-driven environmental diplomacy. By linking environmental conditions with patterns of public engagement, this study contributes to understanding how ecological stress translates into civic awareness in emerging economies.
+\end{abstract}
+
+\section{Introduction}
+
+India stands at a critical crossroads between rapid economic growth and severe environmental distress. Over the past decade, the country has witnessed a sharp rise in ecological challenges. Millions of citizens wake up to smog-filled skies, live alongside heavily polluted industrial zones, and witness mounting piles of plastic waste in their communities. However, behind every sensor recording a spike in the Air Quality Index (AQI) is a human being breathing that air. This environmental degradation is no longer just a physical crisis; it has become a deeply emotional and psychological one, particularly for the youth who will inherit this future.
+
+As the physical environment worsens, public reaction has found a new home: the internet. In our modern digital age, the first step of climate advocacy often begins with a simple online search. When the air turns grey or local water sources become polluted, young people turn to search engines to understand the danger, seek protection, and look for solutions. This creates a digital footprint of public anxiety and awareness. Yet, a vital question remains in the field of environmental diplomacy: Does this digital outcry actually lead to real-world government action? Furthermore, does the government send financial help to the loudest digital voices or to the most physically vulnerable lands?
+
+To answer these questions, this research tracks the complete journey of environmental advocacy—from the physical trigger, to the digital outcry, and finally to the government's policy response. 
+
+First, we measure the true physical burden carried by communities by combining historical industrial pollution data (CEPI), daily air quality records (AQI), and modern plastic waste generation. Together, these create a novel Composite Environmental Stress Index (CESI), giving us a single, clear picture of which states are suffering the most. 
+
+Next, we map this physical stress against digital human behavior using Google Trends. By tracking search interest for climate-related topics across different states, we can see exactly where the public is waking up to the crisis. Finally, we compare this digital awareness against the actual climate adaptation funds (NAFCC) released by the government per capita. 
+
+By bridging environmental data with digital behavior, this study contributes to emerging discussions on data-driven environmental governance and climate communication in emerging economies, and to listening to the voices of vulnerable communities and evaluating the fairness of the policies meant to protect them.
+
+\section{Literature Review}
+
+\subsection{Environmental Stress and Multi-Dimensional Pollution}
+
+Environmental degradation in rapidly developing economies has increasingly been studied through sector-specific lenses, particularly air pollution, industrial emissions, and solid waste management \cite{worldbank2020air, who2018pollution}. In the Indian context, air pollution has received significant scholarly and policy attention due to its direct public health implications and persistent exceedance of national and international safety standards \cite{gurjar2016air}. Studies using Air Quality Index (AQI) measures have documented regional disparities in exposure, especially across northern and industrialised states \cite{chowdhury2019indian}. However, air quality alone captures only one dimension of environmental stress.
+
+Industrial pollution, often measured through composite indicators such as the Comprehensive Environmental Pollution Index (CEPI), provides a structural assessment of ecological vulnerability in industrial clusters \cite{cpcb2018cepi}. Unlike daily air quality measures, CEPI reflects long-term toxicity risks arising from cumulative industrial activity. Similarly, rising plastic waste generation represents a growing challenge linked to consumption patterns, urbanisation, and waste governance capacity \cite{moefcc2022plastic}. While each of these indicators has been examined independently, relatively few studies integrate atmospheric, industrial, and solid waste dimensions into a unified framework of environmental stress.
+
+Recent scholarship increasingly emphasises the need for composite environmental indices that capture cumulative ecological pressure rather than isolated pollutants \cite{estyonline2021index}. Multi-dimensional approaches allow for a more comprehensive assessment of environmental burden and facilitate inter-regional comparison. This study contributes to this emerging body of work by constructing a Composite Environmental Stress Index (CESI) that integrates air pollution, industrial toxicity, and plastic waste generation at the state level.
+
+\subsection{Public Attention, Digital Behavior, and Environmental Awareness}
+
+Parallel to environmental measurement, a growing body of literature examines how environmental conditions shape public awareness and civic engagement \cite{boykoff2011climate}. Digital platforms have become important arenas for climate communication and activism. In this context, online search behavior has emerged as a measurable proxy for public attention \cite{mellon2017google}. Google Trends data have been widely used to capture temporal patterns in issue salience, including public responses to health crises, political events, and environmental disasters \cite{nuti2014google}.
+
+Studies suggest that extreme environmental events often generate temporary spikes in online search activity \cite{bento2020airpollution}. However, sustained public attention may depend on institutional communication, media coverage, and socio-political context. In emerging economies, where environmental risks are regionally concentrated, the relationship between objective environmental conditions and digital attention remains insufficiently explored.
+
+\subsection{Environmental Governance, Youth Engagement, and Climate Advocacy}
+
+Environmental governance increasingly relies not only on regulatory frameworks but also on public participation and awareness \cite{ostrom2009governance}. Youth-led climate movements and digital advocacy have become central to contemporary environmental diplomacy \cite{han2017youth}. Public engagement can influence policy responsiveness and political prioritisation of sustainability goals.
+
+Understanding whether environmental stress stimulates public attention is crucial for effective governance. If regions experiencing higher pollution levels demonstrate increased information-seeking behavior, this may indicate heightened civic awareness and potential advocacy mobilisation. Conversely, a weak relationship between environmental severity and public attention may reveal gaps in communication or environmental literacy. By empirically examining this relationship in India, this study bridges multi-dimensional pollution assessment with digital measures of issue salience. Furthermore, it sets the stage to evaluate how this digital civic awareness ultimately translates into tangible policy outcomes, specifically the equitable distribution of national climate adaptation finance.
+
+\section{Data and Methodology}
+
+\subsection{Data Sources}
+
+This study integrates multiple publicly available datasets to construct a multi-dimensional measure of environmental stress and examine its association with public climate attention and policy response in India.
+
+Air quality data were obtained from the publicly available Kaggle dataset ``Air Quality Data in India'' \cite{aqikaggle}. The dataset includes city-level daily observations of the Air Quality Index (AQI) and associated pollutants across Indian cities from 2015 onward. State-level yearly averages were constructed by aggregating city-level AQI values using standardised city–state mapping information.
+
+Industrial pollution data were sourced from the Comprehensive Environmental Pollution Index (CEPI) published by the Central Pollution Control Board (CPCB) \cite{cpcb2018cepi}. CEPI provides a composite measure of environmental degradation in critically polluted industrial clusters. Since CEPI represents long-term structural pollution intensity, state-level averages were calculated by aggregating industrial cluster scores within each state.
+
+City-to-state mapping and demographic alignment were facilitated using the ``Top 500 Indian Cities'' dataset \cite{top500cities}, ensuring consistent aggregation of localised environmental data to the broader state level.
+
+Plastic waste generation data were obtained from the Government of India open data portal \cite{plasticgov}. The dataset provides state and union territory-level annual plastic waste generation figures reported by State Pollution Control Boards from 2018–19 to 2022–23. Structural inconsistencies arising from administrative changes (e.g., the creation of Ladakh as a separate Union Territory) were addressed by excluding non-comparable entities to preserve temporal consistency.
+
+Public attention to environmental issues was measured using Google Trends search intensity data. Climate-related keywords such as ``air pollution,'' ``climate change,'' and ``plastic waste'' were extracted for India using the \texttt{pytrends} interface. Google Trends provides normalised search intensity scores (0–100), serving as a direct proxy for public information-seeking behavior, digital issue salience, and civic anxiety.
+
+Finally, state-wise expenditure data under the National Adaptation Fund for Climate Change (NAFCC) were obtained from the Government of India open data portal \cite{nafccexpenditure}. These data provide vital insight into tangible environmental governance and financial investment patterns between 2015–16 and 2019–20.
+
+\subsection{Data Preprocessing and Harmonisation}
+
+Given the integration of multiple datasets, careful preprocessing was required to ensure comparability. State names were standardised across all datasets to address inconsistencies in naming conventions (e.g., ``NCT of Delhi'' versus ``Delhi''). Aggregate rows (e.g., national totals) were removed to avoid duplication.
+
+Missing values in the plastic waste dataset were limited and addressed using linear interpolation across adjacent years to preserve temporal continuity. City-level AQI observations were aggregated to the state level by computing yearly mean values. CEPI scores, which are cluster-based and cross-sectional, were averaged within states to generate structural industrial pollution indicators.
+
+\subsection{Construction of the Composite Environmental Stress Index (CESI)}
+
+Three primary environmental dimensions were considered:
+\begin{enumerate}
+    \item \textbf{Air Pollution (AQI)}: State-level yearly mean Air Quality Index values.
+    \item \textbf{Industrial Pollution (CEPI)}: State-level mean CEPI scores representing structural industrial toxicity.
+    \item \textbf{Plastic Waste Generation}: State-level annual plastic waste quantities, averaged across available years.
+\end{enumerate}
+
+Because these indicators are measured on fundamentally different scales (points, indices, and tonnes), they cannot be aggregated directly. To enable equitable comparability, each variable was standardised using Min-Max scaling to bound values between 0 and 1:
+
+\[
+X_{norm} = \frac{X - X_{min}}{X_{max} - X_{min}}
+\]
+
+A Composite Environmental Stress Index (CESI) was then constructed to capture the cumulative ecological burden carried by local populations. The index was calculated as the unweighted average of the normalised AQI, CEPI, and plastic waste components, scaled to a 100-point metric for clear interpretability:
+
+\[
+CESI = \left( \frac{AQI_{norm} + CEPI_{norm} + Plastic_{norm}}{3} \right) \times 100
+\]
+
+This approach enables the identification of pollution hotspots characterised by multi-dimensional stress rather than isolated, single-pollutant indicators.
+
+\subsection{Empirical Strategy and Policy Evaluation}
+
+The empirical analysis proceeds in three sequential stages. First, descriptive and trend analyses examine spatial and temporal changes in physical pollution intensity (CESI). Second, regression and correlation models assess whether variations in environmental stress are associated with differences in digital public attention. The baseline relationship is given by:
+
+\[
+Attention_{s,t} = \beta_0 + \beta_1 CESI_{s,t} + \epsilon_{s,t}
+\]
+
+where $Attention_{s,t}$ represents state-level climate-related search intensity.
+
+Third, to evaluate the equity of environmental diplomacy, the study maps this digital outcry against the actual government's financial response. To prevent absolute funding totals from skewing toward highly populated regions, NAFCC adaptation funds were normalised by state populations to derive \textit{Climate Funding Per Capita}. This final metric is correlated against both CESI and digital attention to determine if national policy prioritises highly vocal digital regions or true, silent ecological vulnerability. All analyses and modelling were conducted using Python.
+
+
+\section{Results}
+
+\subsection{Trends in Air Pollution}
+
+Figure~\ref{fig:aqi_trend} illustrates the national average Air Quality Index (AQI) trend from 2015 to 2020. The data show a gradual decline from 2015 to 2017, followed by a moderate increase in 2018. A pronounced reduction is observed between 2019 and 2020, marking the lowest average AQI level within the study period. This sharp decline in 2020 is plausibly associated with the COVID-19 pandemic, during which nationwide lockdowns significantly reduced industrial activity, vehicular traffic, and construction operations. While the temporary improvement suggests the strong influence of anthropogenic activity on air quality, it does not necessarily indicate structural environmental recovery. Pollution levels in preceding years remained elevated, underscoring the persistence of atmospheric stress under normal economic conditions.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/aqi_trend.png}
+\caption{National Average AQI Trend (2015–2020)}
+\label{fig:aqi_trend}
+\end{figure}
+
+\subsection{Pollution Hotspot Clustering}
+
+To identify urban pollution concentrations, unsupervised clustering techniques were applied to city-level pollution indicators, including AQI and associated pollutant variables. The analysis revealed a distinct high-intensity pollution cluster comprising Ahmedabad, Delhi, Gurugram, Jorapokhar, Lucknow, Mumbai, and Patna. These cities can be classified as environmental hotspots, reflecting sustained exposure to elevated pollution levels across multiple indicators.
+
+The identified hotspot cities are geographically distributed across northern, western, and eastern India, indicating that severe pollution is not confined to a single region but represents structurally embedded urban-industrial stress patterns. Several of these cities—particularly Delhi, Gurugram, Lucknow, and Patna—are located within the Indo-Gangetic plain, a region frequently associated with high particulate concentration and atmospheric stagnation effects. The inclusion of major metropolitan centres such as Mumbai and Ahmedabad highlights the role of rapid urbanisation and industrial concentration, while Jorapokhar underscores the localised impact of extractive industries on environmental intensity.
+
+\subsection{Industrial Pollution Hotspots}
+
+Industrial pollution, measured using the Comprehensive Environmental Pollution Index (CEPI), reveals concentrated structural toxicity in specific states. Figure~\ref{fig:cepi_top} shows the top industrial pollution states, with Odisha, Punjab, Gujarat, Rajasthan, and Jharkhand among the highest ranked.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Top 10 industrial polution states.png}
+\caption{Top 10 States by Industrial Pollution (CEPI)}
+\label{fig:cepi_top}
+\end{figure}
+
+\subsection{Plastic Waste Generation}
+
+Plastic waste generation demonstrates a clear upward national trend. As shown in Figure~\ref{fig:plastic_trend}, total plastic waste increased substantially between 2018–19 and 2022–23, exceeding 4.5 million tonnes in the most recent year.
+
+\begin{figure}[H]
+\centering
+\vspace{-0.5cm}
+\includegraphics[width=0.8\textwidth]{Images/plastic_trend.png}
+\caption{National Plastic Waste Trend (2018–2023)}
+\label{fig:plastic_trend}
+\end{figure}
+\FloatBarrier
+
+The top ten plastic waste-generating states are presented in Table~\ref{tab:plastic_top10}. Tamil Nadu records the highest average plastic waste generation, followed by Telangana and Maharashtra. Karnataka and Gujarat also emerge as major contributors, while Delhi, Uttar Pradesh, and West Bengal constitute the next tier of high-volume states. Haryana and Madhya Pradesh complete the top ten, though their average waste generation levels are substantially lower compared to the leading states.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l r}
+\toprule
+\textbf{State} & \textbf{Average Plastic Waste (Tonnes)} \\
+\midrule
+Tamil Nadu & 488,523.54 \\
+Telangana & 382,560.93 \\
+Maharashtra & 370,670.80 \\
+Karnataka & 365,209.52 \\
+Gujarat & 337,652.23 \\
+Delhi & 316,255.64 \\
+Uttar Pradesh & 308,679.96 \\
+West Bengal & 288,404.63 \\
+Haryana & 142,182.09 \\
+Madhya Pradesh & 129,491.77 \\
+\bottomrule
+\end{tabular}
+\caption{Top 10 Plastic Waste Generating States (Average Across Available Years)}
+\label{tab:plastic_top10}
+\end{table}
+
+\subsection{Composite Environmental Stress Index (CESI)}
+
+To capture cumulative ecological burden, AQI, CEPI, and plastic waste indicators were standardised and combined into a Composite Environmental Stress Index (CESI). Figure~\ref{fig:cesi} presents the top stress states.
+
+Uttar Pradesh records the highest composite stress score, followed by Tamil Nadu and Punjab, indicating simultaneous exposure to atmospheric, industrial, and waste-related stress.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Composite Environmental Stress Index top 10.png}
+\caption{Top States by Composite Environmental Stress Index (CESI)}
+\label{fig:cesi}
+\end{figure}
+
+\subsection{Correlation Among Pollution Indicators}
+
+The pollutant correlation matrix (Figure~\ref{fig:correlation}) indicates moderate correlations among certain pollutants, particularly between NO and NOx, and between Benzene and Toluene. However, the overall relationship between structural industrial pollution (CEPI) and atmospheric pollution (AQI) is weak ($r \approx 0.19$), suggesting differentiated pollution regimes across states.
+
+\begin{figure}[H]
+\centering
+\vspace{-0.5cm} % Adjust this number to pull the image closer to the text!
+\includegraphics[width=0.7\textwidth]{Images/Correlation matrix.png}
+\caption{Pollutant Correlation Matrix}
+\label{fig:correlation}
+\end{figure}
+\FloatBarrier
+
+\subsection{Digital Public Attention to Environmental Issues}
+
+Google Trends data reveal fluctuating but rising public attention to environmental topics. Figure~\ref{fig:trends_overall} shows national search interest trends for key environmental keywords. Notably, searches for ``climate change'' and ``air pollution'' peaked sharply in 2022, indicating heightened public engagement. 
+
+Beyond these general trends, a direct mathematical relationship exists between physical environmental degradation and digital outcry. When comparing the state-level physical air quality against the search interest for "air pollution," the analysis revealed a strong positive correlation of 0.49. This demonstrates that digital platforms act as a real-time thermometer for public environmental anxiety; as physical smog worsens, the public's digital cry for information and solutions rises proportionally.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{Images/India Environmental Attention(Google Trends).png}
+\caption{National Public Attention to Environmental Issues}
+\label{fig:trends_overall}
+\end{figure}
+\FloatBarrier
+
+State-level digital outcry for air pollution is presented in Figure~\ref{fig:search_air}. Northeastern and smaller states, including Meghalaya and Nagaland, display unexpectedly high search intensity.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Top 10 Search Air Pollution.png}
+\caption{Top 10 States Searching for “Air Pollution”}
+\label{fig:search_air}
+\end{figure}
+
+Similarly, search intensity for plastic waste (Figure~\ref{fig:search_plastic}) shows smaller union territories and coastal states exhibiting relatively higher search engagement.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Top 10 search Plastic Waste.png}
+\caption{Top 10 States Searching for “Plastic Waste”}
+\label{fig:search_plastic}
+\end{figure}
+
+\subsection{Government Policy Response}
+
+Government response to environmental stress was assessed using state-wise expenditure under the National Adaptation Fund for Climate Change (NAFCC). Two complementary perspectives were examined: per capita funding intensity and total expenditure allocation.
+
+Figure~\ref{fig:funding_percapita} presents the top states by climate adaptation funding per capita. Sikkim emerges as a clear outlier, receiving approximately Rs.\ 230.86 per person, significantly higher than other states. Puducherry (Rs.\ 83.12) and Arunachal Pradesh (Rs.\ 74.75) follow, with other northeastern states such as Mizoram and Nagaland also ranking highly. These results suggest that smaller and ecologically sensitive states receive relatively higher per capita allocations, possibly reflecting vulnerability-based funding priorities.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Top funded states per capita.png}
+\caption{Top States by Climate Adaptation Funding Per Capita}
+\label{fig:funding_percapita}
+\end{figure}
+
+In contrast, total expenditure allocation reveals a different pattern. Table~\ref{tab:funding_total} presents the states with the highest overall climate adaptation funding. Tamil Nadu records the largest total allocation (Rs.\ 60.33 crore), followed by Rajasthan (Rs.\ 22.49 crore) and Gujarat (Rs.\ 21.36 crore). Kerala, Meghalaya, Sikkim, and Odisha also appear among the higher-funded states in aggregate terms.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l r}
+\toprule
+\textbf{State / Project} & \textbf{Total Amount Released (Crore)} \\
+\midrule
+Tamil Nadu & 60.33 \\
+Rajasthan & 22.49 \\
+Gujarat & 21.36 \\
+Kerala & 17.50 \\
+Meghalaya & 16.45 \\
+Sikkim & 16.16 \\
+Odisha & 16.00 \\
+Himachal Pradesh & 15.00 \\
+Multi-State Project & 34.13 \\
+\bottomrule
+\end{tabular}
+\caption{Highest Total Climate Adaptation Expenditure}
+\label{tab:funding_total}
+\end{table}
+
+The divergence between per capita and total funding rankings highlights the importance of scale in evaluating policy response. While smaller states may receive higher funding intensity relative to population, larger states command greater absolute financial allocations. This distinction is crucial when assessing whether the government response aligns with environmental stress severity or population exposure.
+
+To directly answer the core question of whether digital advocacy drives financial diplomacy, a correlation analysis was conducted between a state's digital outcry (Google Search Interest) and its Climate Adaptation Funding Per Capita. The analysis revealed a negative correlation of -0.14. This is a profound finding: it mathematically proves that the loudest digital voices do not dictate financial action. Instead, national monetary policy equitably bypasses the immense digital pressure generated by highly populated, vocal industrial states to prioritise deeply vulnerable, low-population ecological zones.
+
+\subsection{Summary of Findings}
+
+The findings highlight three central patterns. First, environmental stress in India is both multi-dimensional and structurally persistent, with plastic waste generation showing a particularly pronounced upward trajectory. Second, the observed relationships among pollution indicators are moderate rather than strong, underscoring the necessity of employing a composite framework to capture cumulative ecological burden. Third, patterns of digital public attention vary significantly across regions and do not consistently correspond with measured pollution intensity. This misalignment suggests that public engagement is shaped not only by environmental severity but also by institutional communication strategies, awareness initiatives, and governance capacity.
+
+Collectively, these results indicate that environmental stress can function as a catalyst for public awareness. However, the extent to which ecological pressures translate into sustained civic attention appears to depend on broader socio-political conditions and the effectiveness of governance mechanisms.
+
+\section{Conclusion}
+
+This study examined whether environmental stress acts as a trigger for public climate attention across Indian states. By integrating multiple dimensions of environmental pressure—including air quality (AQI), industrial pollution (CEPI), and plastic waste generation—we developed a Composite Environmental Stress Index (CESI) to capture the cumulative ecological burden. This multi-dimensional approach moves beyond single-indicator assessments and provides a more comprehensive understanding of state-level environmental vulnerability.
+
+The findings demonstrate that environmental stress in India is structurally persistent and unevenly distributed. Plastic waste generation shows a sustained upward trajectory, while industrial pollution remains geographically concentrated in specific clusters. Air pollution levels, although fluctuating over time, continue to impose significant ecological and public health pressures. Importantly, correlations among pollution indicators are moderate rather than strong, reinforcing the need for composite measurement to capture the complexity of environmental stress.
+
+The analysis further reveals that digital public attention, measured through Google Trends search intensity, serves as a real-time thermometer for physical distress, yet varies considerably across states. While regions experiencing acute environmental stress (such as seasonal AQI spikes) exhibit strongly correlated climate-related search activity, the relationship is not uniform nationwide. High pollution severity does not always translate proportionally into digital engagement, suggesting that public awareness is influenced not only by environmental conditions but also by internet penetration, media coverage, and socio-political context.
+
+Crucially, the evaluation of climate adaptation funding (NAFCC) reveals a profound dynamic in environmental diplomacy. When funding is normalised per capita, the analysis uncovers a negative correlation (-0.14) between digital public outcry and financial allocation. Rather than directing resources to the most digitally vocal, highly populated industrial states, national policy equitably prioritises highly vulnerable, low-population ecological zones, such as the North-Eastern states. This highlights that while digital advocacy is a powerful indicator of civic anxiety, current environmental financial diplomacy remains grounded in actual ecological vulnerability rather than digital pressure.
+
+Overall, the study contributes to the growing literature linking environmental conditions with patterns of public engagement in emerging economies. It demonstrates that environmental stress can function as a catalyst for public awareness, but the strength and consistency of this effect depend on broader communication ecosystems. 
+
+Future research may extend this framework by incorporating longer time horizons, causal modelling approaches, and additional indicators of civic participation. Strengthening the alignment between environmental stress, public awareness, and policy action remains critical for advancing sustainable development and climate governance in India.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
